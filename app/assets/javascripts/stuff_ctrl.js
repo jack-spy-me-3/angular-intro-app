@@ -3,8 +3,25 @@
   "use strict";
 
   angular.module("app").controller("stuffCtrl", function($scope) {
-    $scope.purpleHippo = "Hello World";
+    $scope.tasks = [
+                    {text: "Go on a diet", assignee: "James"},
+                    {text: "Bring the coffee", assignee: "Jonathan"},
+                    {text: "Help the students", assignee: "Andy"}
+                   ];
 
-    window.$scope = $scope;
+    $scope.addTodo = function(todo, assignee) {
+      if (todo) {
+        $scope.tasks.push({text: todo, assignee: assignee});
+        $scope.newTodo = null;
+      }
+    };
+
+    $scope.removeTask = function(index) {
+      $scope.tasks.splice(index, 1);
+    };
+
+    $scope.isNotFood = function(task) {
+      return task.indexOf("food") === -1;
+    };
   });
 })();

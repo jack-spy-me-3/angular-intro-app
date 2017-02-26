@@ -2,6 +2,18 @@
   {{ 1 + 1 }}
 
   <div ng-controller="stuffCtrl">
-    <p> {{ purpleHippo }}</p>
+    <h2>Todo List</h2>
+    <div ng-repeat="task in tasks track by $index" ng-if="isNotFood(task.text)">
+      <p ng-click="removeTask($index)">
+        {{ task.text }}
+        <div>Assigned To: {{ task.assignee }}</div>
+      </p>
+      <input ng-model="task.text">
+    </div>
+
+    <h3>Leave your todo item:</h3>
+    <input ng-model="newTodo">
+    <input ng-model="newAssignee">
+    <button ng-click="addTodo(newTodo, newAssignee)">Add Todo Item</button>
   </div>
 </div>

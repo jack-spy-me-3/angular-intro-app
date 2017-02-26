@@ -9,9 +9,10 @@
                     {text: "Help the students", assignee: "Andy"}
                    ];
 
-    $scope.addTodo = function(todo, assignee) {
+    $scope.addTodo = function(todo, inputAssignee) {
       if (todo) {
-        $scope.tasks.push({text: todo, assignee: assignee});
+        $scope.tasks.push({text: todo,
+                      assignee: inputAssignee});
         $scope.newTodo = null;
       }
     };
@@ -23,5 +24,6 @@
     $scope.isNotFood = function(task) {
       return task.indexOf("food") === -1;
     };
+    window.$scope = $scope;
   });
 })();

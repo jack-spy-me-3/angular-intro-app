@@ -4,16 +4,15 @@
   <div ng-controller="stuffCtrl">
     <h2>Todo List</h2>
     <div ng-repeat="task in tasks track by $index" ng-if="isNotFood(task.text)">
-      <p ng-click="removeTask($index)">
+      <p ng-click="markComplete(task)" ng-class="{strike: task.completed}">
         {{ task.text }}
-        <div>Assigned To: {{ task.assignee }}</div>
       </p>
       <input ng-model="task.text">
     </div>
-
+    <div>Number of incomplete tasks: {{ counter() }}</div>
     <h3>Leave your todo item:</h3>
     <input ng-model="newTodo">
-    <input ng-model="newAssignee">
-    <button ng-click="addTodo(newTodo, newAssignee)">Add Todo Item</button>
+    <button ng-click="addTodo(newTodo)">Add Todo Item</button>
+    <button ng-click="removeCompletedTasks()">Remove Completed Tasks</button>
   </div>
 </div>
